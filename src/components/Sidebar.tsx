@@ -30,8 +30,14 @@ const menuItems = [
   { icon: Settings, label: 'Settings' }
 ];
 
-export default function Sidebar({ isOpen, onClose, onAIToggle } : { isOpen: boolean, onClose: () => void, onAIToggle: () => void }) {
-  const [hoveredItem, setHoveredItem] = useState(0);
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onAIToggle: () => void;
+}
+
+export default function Sidebar({ isOpen, onClose, onAIToggle }: SidebarProps) {
+  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
 
   return (
     <>
@@ -62,10 +68,10 @@ export default function Sidebar({ isOpen, onClose, onAIToggle } : { isOpen: bool
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-linear-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+              {/* <div className="w-8 h-8 bg-linear-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">E</span>
-              </div>
-              <span className="font-semibold text-gray-900 dark:text-white">EduMind</span>
+              </div> */}
+              <span className="font-semibold text-xl text-gray-900 dark:text-white">EduMind</span>
             </div>
             <button
               onClick={onClose}
@@ -79,7 +85,7 @@ export default function Sidebar({ isOpen, onClose, onAIToggle } : { isOpen: bool
           <div className="p-4">
             <button
               onClick={onAIToggle}
-              className="w-full flex items-center gap-3 p-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="w-full flex items-center gap-3 p-3 bg-linear-to-r from-blue-500 to-purple-600 text-white rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               <Bot className="w-5 h-5" />
               <span className="font-medium">AI Assistant</span>
@@ -100,7 +106,7 @@ export default function Sidebar({ isOpen, onClose, onAIToggle } : { isOpen: bool
                           : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
                       }`}
                       onMouseEnter={() => setHoveredItem(index)}
-                      onMouseLeave={() => setHoveredItem(0)}
+                      onMouseLeave={() => setHoveredItem(null)}
                     >
                       <Icon className={`w-5 h-5 transition-transform duration-200 ${
                         hoveredItem === index ? 'scale-110' : ''

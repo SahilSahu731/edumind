@@ -3,9 +3,15 @@
 import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
 import { getIconColorClasses } from '../lib/utils';
+import { SummaryCardData } from '../types';
 
-export default function SummaryCard({ data, index }) {
-  const Icon = Icons[data.icon];
+interface SummaryCardProps {
+  data: SummaryCardData;
+  index: number;
+}
+
+export default function SummaryCard({ data, index }: SummaryCardProps) {
+  const Icon = Icons[data.icon] as React.ComponentType<{ className?: string }>;
   
   return (
     <motion.div

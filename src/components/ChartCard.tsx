@@ -5,7 +5,16 @@ import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, R
 
 const COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'];
 
-export default function ChartCard({ title, data, type = 'line', index }: { title: string, data: any[], type?: 'line' | 'bar' | 'pie', index: number }) {
+import { ChartData } from '../types';
+
+interface ChartCardProps {
+  title: string;
+  data: ChartData[];
+  type?: 'line' | 'bar' | 'pie';
+  index: number;
+}
+
+export default function ChartCard({ title, data, type = 'line', index }: ChartCardProps) {
   const renderChart = () => {
     switch (type) {
       case 'line':

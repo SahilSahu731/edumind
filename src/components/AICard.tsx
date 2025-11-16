@@ -31,7 +31,14 @@ const colorMap = {
   }
 };
 
-export default function AICard({ insight, index }: { insight: any, index: number }) {
+import { AIInsight } from '../types';
+
+interface AICardProps {
+  insight: AIInsight;
+  index: number;
+}
+
+export default function AICard({ insight, index }: AICardProps) {
   const Icon = iconMap[insight.type] || iconMap.default;
   const colors = colorMap[insight.type] || colorMap.info;
   

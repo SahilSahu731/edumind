@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, Bell, Settings, User, Moon, Sun, Menu } from 'lucide-react';
+import { Search, Bell, Settings, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
@@ -79,7 +79,7 @@ export default function Header() {
               onClick={() => setShowProfile(!showProfile)}
               className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
-              <div className="w-8 h-8 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-linear-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center">
                 <User className="w-4 h-4 text-white" />
               </div>
               <span className="hidden md:block text-sm font-medium">Admin</span>

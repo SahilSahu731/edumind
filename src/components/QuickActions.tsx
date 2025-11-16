@@ -3,12 +3,17 @@
 import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
 import { getColorClasses } from '../lib/utils';
+import { QuickAction } from '../types';
 
-export default function QuickActions({ actions }: { actions: any}) {
+interface QuickActionsProps {
+  actions: QuickAction[];
+}
+
+export default function QuickActions({ actions }: QuickActionsProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
       {actions.map((action, index) => {
-        const Icon = Icons[action.icon];
+        const Icon = Icons[action.icon] as React.ComponentType<{ className?: string }>;
         
         return (
           <motion.button

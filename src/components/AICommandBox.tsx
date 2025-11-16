@@ -12,7 +12,11 @@ const suggestions = [
   "List upcoming parent-teacher meetings"
 ];
 
-export default function AICommandBox({ onQuery }: { onQuery: (query: string) => void }) {
+interface AICommandBoxProps {
+  onQuery: (query: string) => void;
+}
+
+export default function AICommandBox({ onQuery }: AICommandBoxProps) {
   const [query, setQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
 
@@ -38,11 +42,11 @@ export default function AICommandBox({ onQuery }: { onQuery: (query: string) => 
       className="relative"
     >
       {/* Main Command Box */}
-      <div className={`relative bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-3xl p-8 border border-blue-200 dark:border-blue-800 transition-all duration-300 ${
+      <div className={`relative bg-linear-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-3xl p-8 border border-blue-200 dark:border-blue-800 transition-all duration-300 ${
         isFocused ? 'ring-2 ring-blue-500 ring-opacity-50 scale-[1.02]' : ''
       }`}>
         <div className="flex items-center gap-4 mb-6">
-          <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl">
+          <div className="p-3 bg-linear-to-br from-blue-500 to-purple-600 rounded-2xl">
             <Sparkles className="w-8 h-8 text-white" />
           </div>
           <div>
@@ -77,7 +81,7 @@ export default function AICommandBox({ onQuery }: { onQuery: (query: string) => 
               <button
                 type="submit"
                 disabled={!query.trim()}
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl hover:from-blue-600 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium"
+                className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-500 to-purple-600 text-white rounded-xl hover:from-blue-600 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium"
               >
                 Ask AI
                 <ArrowRight className="w-4 h-4" />
@@ -121,7 +125,7 @@ export default function AICommandBox({ onQuery }: { onQuery: (query: string) => 
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-60"
+        className="absolute -top-4 -right-4 w-8 h-8 bg-linear-to-br from-yellow-400 to-orange-500 rounded-full opacity-60"
       />
       
       <motion.div
@@ -135,7 +139,7 @@ export default function AICommandBox({ onQuery }: { onQuery: (query: string) => 
           ease: "easeInOut",
           delay: 1
         }}
-        className="absolute -bottom-2 -left-2 w-6 h-6 bg-gradient-to-br from-green-400 to-blue-500 rounded-full opacity-40"
+        className="absolute -bottom-2 -left-2 w-6 h-6 bg-linear-to-br from-green-400 to-blue-500 rounded-full opacity-40"
       />
     </motion.div>
   );

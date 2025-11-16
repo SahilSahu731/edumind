@@ -3,7 +3,6 @@
 import AICommandBox from "@/components/AICommandBox";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
-import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { aiInsights, quickActions, summaryData } from "@/data/summaryData";
@@ -16,18 +15,6 @@ import QuickActions from "@/components/QuickActions";
 export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [aiChatOpen, setAiChatOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    if (!isDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
 
   const handleAIQuery = () => {
     setAiChatOpen(true);
@@ -130,7 +117,7 @@ export default function Home() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-linear-to-r from-blue-400 to-purple-600 rounded-full blur-3xl"
         />
         <motion.div
           animate={{ 
@@ -143,7 +130,7 @@ export default function Home() {
             ease: "easeInOut",
             delay: 2
           }}
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-green-400 to-blue-600 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-linear-to-r from-green-400 to-blue-600 rounded-full blur-3xl"
         />
       </div>
     </div>
